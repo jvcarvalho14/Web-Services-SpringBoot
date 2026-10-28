@@ -1,7 +1,6 @@
-package com.jvcarvalho.webservices.Controllers;
+package com.jvcarvalho.webservices.controllers;
 
 import com.jvcarvalho.webservices.User;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
