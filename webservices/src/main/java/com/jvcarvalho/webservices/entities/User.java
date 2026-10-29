@@ -1,8 +1,7 @@
-package com.jvcarvalho.webservices;
+package com.jvcarvalho.webservices.entities;
 
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 import java.io.Serializable;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.jvcarvalho.webservices.config;
 
-import com.jvcarvalho.webservices.User;
+import com.jvcarvalho.webservices.entities.User;
 import com.jvcarvalho.webservices.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
