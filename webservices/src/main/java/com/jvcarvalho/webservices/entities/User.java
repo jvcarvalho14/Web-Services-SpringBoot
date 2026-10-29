@@ -1,9 +1,12 @@
 package com.jvcarvalho.webservices.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +21,10 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
 
     public User(){}
 
@@ -49,6 +56,8 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+
+    public List<Order> getOrders(){ return orders;}
 
     public void setId(Long id) {
         this.id = id;
