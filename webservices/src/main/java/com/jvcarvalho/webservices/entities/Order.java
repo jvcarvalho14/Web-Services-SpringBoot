@@ -25,6 +25,8 @@ public class Order implements Serializable {
 
     private Integer orderStatus;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
@@ -59,6 +61,10 @@ public class Order implements Serializable {
         return client;
     }
 
+    public Payment getPayment() {
+        return payment;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -78,6 +84,10 @@ public class Order implements Serializable {
 
     public Set<OrderItem> getItems(){
         return items;
+    }
+
+    public void setPayment(Payment payment){
+        this.payment = payment;
     }
 
     @Override
