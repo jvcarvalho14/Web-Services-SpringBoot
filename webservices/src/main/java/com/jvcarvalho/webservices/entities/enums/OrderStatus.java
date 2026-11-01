@@ -3,7 +3,7 @@ package com.jvcarvalho.webservices.entities.enums;
 public enum OrderStatus {
 
     WAITING_PAYMENT(1),
-    PAYED(2),
+    PAID(2),
     SHIPPED(3),
     DELIVERED(4),
     CANCELED(5);

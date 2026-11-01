@@ -1,14 +1,8 @@
 package com.jvcarvalho.webservices.config;
 
-import com.jvcarvalho.webservices.entities.Category;
-import com.jvcarvalho.webservices.entities.Order;
-import com.jvcarvalho.webservices.entities.Product;
-import com.jvcarvalho.webservices.entities.User;
+import com.jvcarvalho.webservices.entities.*;
 import com.jvcarvalho.webservices.entities.enums.OrderStatus;
-import com.jvcarvalho.webservices.repositories.CategoryRepository;
-import com.jvcarvalho.webservices.repositories.OrderRepository;
-import com.jvcarvalho.webservices.repositories.ProductRepository;
-import com.jvcarvalho.webservices.repositories.UserRepository;
+import com.jvcarvalho.webservices.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
 
 
@@ -70,5 +67,13 @@ public class TestConfig implements CommandLineRunner {
         p5.getCategories().add(cat2);
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
     }
 }
