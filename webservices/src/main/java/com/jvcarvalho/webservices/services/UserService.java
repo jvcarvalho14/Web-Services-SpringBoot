@@ -2,8 +2,9 @@ package com.jvcarvalho.webservices.services;
 
 import com.jvcarvalho.webservices.entities.User;
 import com.jvcarvalho.webservices.repositories.UserRepository;
-import com.jvcarvalho.webservices.services.exceptions.ResouceNotFoundException;
+import com.jvcarvalho.webservices.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,14 +22,18 @@ public class UserService {
 
     public User findById(Long id){
         Optional<User> obj = repository.findById(id);
-        return obj.orElseThrow(() -> new ResouceNotFoundException(id));
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public User insert(User obj){
+    public User insert(User obj) {
         return repository.save(obj);
     }
 
+
     public void delete(Long id){
+        if (!repository.existsById(id)) {
+            throw new ResourceNotFoundException(id);
+        }
         repository.deleteById(id);
     }
 
